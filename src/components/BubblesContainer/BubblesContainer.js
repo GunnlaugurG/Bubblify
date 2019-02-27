@@ -1,18 +1,17 @@
 import React from 'react';
-import { get } from 'http';
-
-class BubblesContainer extends React.Component{
+import BubbleList from '../BubbleList/BubbleList';
 
 
-
-    render() {
-        //console.log(getBubbles);
-            return (
-            <div className="bubble-container">
-                <div test="TEST FROM CHILD"></div>
-            </div>
-        )
-    };
+const BubblesContainer = () => { 
+    return (
+        <div className="bubble-container">
+            <ul>
+                <BubbleList />
+            </ul>
+        </div>
+    )
 };
+
+
 
 export default BubblesContainer;

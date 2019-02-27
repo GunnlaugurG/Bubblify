@@ -2,30 +2,34 @@
 body {
     color: white;
     height: 100%;
-    background-image: linear-gradient(to bottom, black, black, black, black, black, lightgrey);
-    background-repeat: no-repeat;
+    background: url('https://www.freeiconspng.com/uploads/water-bubbles-png-6.png'), linear-gradient(to bottom, black, black, black, black, black, lightgrey);
+    background-size: 100%;
     background-attachment: fixed;
     .navigation-bar {
+        position: fixed;
+        top: 0;
+        z-index: 2;
         background-color: black;
-        box-shadow:0 0 10px rgb(255, 255, 255, 0.1);
         padding: 10%, 100px, 0, 0;
         display: inline-block;
         height: 100px;
         width: 100%;
+
+        background-color: rgba(0, 0, 0, 0.4);
+        box-shadow: 0 0 10px rgba(255, 255, 255, .2);
         ul.navigation-links {
-            float: left;
+            float: right;
+            margin: 0 auto;
             height: 100%;
             list-style: none !important;
             display: table;
             li {
+                font-size: 1.5em;
                 vertical-align: middle;
-                margin: 0 auto;
-                width: 100px;
                 height: 100%;
+                padding-right: 20px;
                 display: table-cell;
                 color: white;
-                padding: 10px;
-                border-right: 1px solid white;
             }
         }
         img.navigation-logo{
@@ -34,10 +38,30 @@ body {
         }
     }
     .bubble-container{
+        top: 120px;
         color: white;
         width: 60%;
         margin: 30px auto;
         position: relative;
-        background-color: rgba(255, 255, 255, 0.062);
+        ul{
+            display: inline;
+            list-style: none !important;
+            li{
+                padding: 10px;
+            }
+            div.card{
+                background-color:rgba(255, 255, 255, 0.1);
+                box-shadow: 0 0 10px rgba(255, 255, 255, .2);
+                width: 100%;
+                display: inline-block;
+
+            }
+            img{
+                margin: 20px;
+                width: 200px;
+                height: 200px;
+                float: left;
+            }
+        }
     }
 }
