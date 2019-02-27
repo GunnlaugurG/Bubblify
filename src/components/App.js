@@ -3,27 +3,17 @@ import { Switch, Route} from 'react-router-dom';
 
 import Navbar from './Navbar/Navbar';
 import BubblesContainer from './BubblesContainer/BubblesContainer';
+import Home from './Home/Home'
 
 const App = () => {
     return (
+        <div>
+        <Navbar/>
         <Switch>
-            <Route exact path="/" render={ () => ( 
-                <Navbar/>
-            )}/>
-            <Route path="/bubbles" render={ () => ( 
-                <div>
-                    <Navbar/>
-                    <BubblesContainer/>
-                </div>
-            )}/>
-            <Route render={({ location }) => {
-                <div> 
-                    <div>404!</div>
-                    <div>{location.pathname} was not found!</div>
-                </div>
-            }} />
-            }
+            <Route exact path="/" component={ Home } />
+            <Route path="/bubbles" component={ BubblesContainer } />
         </Switch>
+        </div>
     )
 };
 
