@@ -21,7 +21,6 @@ class CartListItem extends React.Component{
             price: this.props.price
         })
 
-        console.log(this.state);
     }
 
     removeItem(){
@@ -34,6 +33,8 @@ class CartListItem extends React.Component{
 
 
     render(){
+        console.log(this.state);
+
         return(
             <li>
                 <div className="card">
