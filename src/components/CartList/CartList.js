@@ -10,8 +10,15 @@ class CartList extends React.Component{
         this.state = {
             products: [{}],
         }
+        this.convertLocal = this.convertLocal.bind(this);
     }
     componentDidMount(){
+        this.convertLocal();
+    }
+
+
+    convertLocal(){
+        console.log("FROM CHILD");
         var keys = Object.keys(localStorage);
         var items = [];
         
@@ -26,10 +33,11 @@ class CartList extends React.Component{
 
 
 
+
     render(){
         const { products } = this.state;
         return(
-            products.map(b => <CartListItem key={b} {...b} />)
+            products.map(b => <CartListItem key={b.id} {...b} updateCart={this.convertLocal.bind(this)}/>)
         )
     }
 }

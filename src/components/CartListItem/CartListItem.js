@@ -5,25 +5,42 @@ import { Link } from 'react-router-dom';
 class CartListItem extends React.Component{
     constructor(props){
         super(props);
+        this.state = {
+            id: null,
+            name: "",
+            image: "",
+            price: null
+        }
         this.removeItem = this.removeItem.bind(this);
     }
-
     componentDidMount(){
-        console.log(this.props.name);
+        this.setState({
+            id: this.props.id,
+            name: this.props.name,
+            image: this.props.image,
+            price: this.props.price
+        })
+
+        console.log(this.state);
     }
 
     removeItem(){
         localStorage.removeItem("item" + this.props.id);
+        this.props.updateCart;
+        this.render();
     }
+
+
+
 
     render(){
         return(
             <li>
                 <div className="card">
-                    <Link to={ "/bubbles/" + this.props.id }><img className=" bubbleImg" src={this.props.image} alt="Card image cap"/></Link>
+                    <Link to={ "/bubbles/" + this.state.id }><img className=" bubbleImg" src={this.state.image} alt="Card image cap"/></Link>
                     <div className="card-body">
-                    <Link to={ "/bubbles/" + this.props.id }><h3 className="card-title">{this.props.name}</h3></Link>
-                        <h5 className="">{this.props.name} $</h5>
+                    <Link to={ "/bubbles/" + this.state.id }><h3 className="card-title">{this.state.name}</h3></Link>
+                        <h5 className="">{this.state.price} $</h5>
                         <i className="fas fa-trash-alt add-cart" onClick={this.removeItem}></i>
                     </div>
                 </div>
@@ -31,5 +48,7 @@ class CartListItem extends React.Component{
         )
     }
 }
+
+
 
 export default CartListItem;
