@@ -26,14 +26,11 @@ class CartListItem extends React.Component{
     removeItem(){
         localStorage.removeItem("item" + this.props.id);
         this.props.updateCart;
-        this.render();
+        this.props.updateCart();
     }
 
 
-
-
     render(){
-        console.log(this.state);
 
         return(
             <li>
@@ -42,7 +39,7 @@ class CartListItem extends React.Component{
                     <div className="card-body">
                     <Link to={ "/bubbles/" + this.state.id }><h3 className="card-title">{this.state.name}</h3></Link>
                         <h5 className="">{this.state.price} $</h5>
-                        <i className="fas fa-trash-alt add-cart" onClick={this.removeItem}></i>
+                        <i className="fas fa-trash-alt remove-cart" onClick={this.removeItem}></i>
                     </div>
                 </div>
             </li>

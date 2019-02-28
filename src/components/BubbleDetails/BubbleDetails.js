@@ -17,7 +17,7 @@ class BubbleDetails extends React.Component{
     }
 
     addToCart(){
-        console.log("HELLO");
+
         localStorage.setItem('item' + this.state.bubble.id, this.state.bubble.id);
         console.log(localStorage);
     }

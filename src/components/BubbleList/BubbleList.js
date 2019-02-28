@@ -8,6 +8,7 @@ export default class BubbleList extends React.Component {
         this.state = {
             products: []
         }
+        this.addToCart = this.addToCart.bind(this);
     }
 
     componentDidMount(){
@@ -17,11 +18,17 @@ export default class BubbleList extends React.Component {
         })
     }
 
+    addToCart(id){
+        console.log("HELLO");
+        localStorage.setItem('item' + id, id);
+        console.log(localStorage);
+    }
+
 
     render() {
         const { products } = this.state;
             return (
-                    products.map(b => <BubbleItem key={b.id} {...b} />)
+                    products.map(b => <BubbleItem key={b.id} {...b}/>)
         )
     };
 };

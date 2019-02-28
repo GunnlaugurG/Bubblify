@@ -9,6 +9,8 @@ import Bundle from './Bundle/Bundle'
 import BundleDetailsList from './BundleDetailsList/BundleDetailsList'
 import About from './About/About'
 import Cart from './Cart/Cart'
+import Checkout from './Checkout/Checkout'
+import CheckoutDeliver from './CheckoutDeliver/CheckoutDeliver'
 
 const App = () => {
     return (
@@ -22,6 +24,8 @@ const App = () => {
             <Route exact path="/bundle/:bundleId" component={ BundleDetailsList } />
             <Route exact path="/about" component={ About } />
             <Route exact path="/cart" component={ Cart } />
+            <Route exact path="/checkout" component={ Checkout } />
+            <Route exact path="/checkout/deliver" component= { CheckoutDeliver } />
         </Switch>
         </div>
     )

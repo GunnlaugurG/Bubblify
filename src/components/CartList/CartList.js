@@ -33,12 +33,19 @@ class CartList extends React.Component{
 
 
 
-
     render(){
         const { products } = this.state;
-        return(
-            products.map(b => <CartListItem key={b.id} {...b} updateCart={this.convertLocal.bind(this)}/>)
-        )
+        if(products.length === 0){
+            return (
+                <div>
+                    <h1> Nothing in cart</h1>
+                </div>
+            )
+        }else{
+            return(
+                products.map(b => <CartListItem key={b.id} {...b} updateCart={this.convertLocal.bind(this)}/>)
+            )
+        }
     }
 }
 
