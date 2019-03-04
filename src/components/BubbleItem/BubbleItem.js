@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import toastr from 'toastr';
 
 class BubbleItem extends React.Component{
     constructor(){
@@ -9,6 +10,7 @@ class BubbleItem extends React.Component{
 
     addToCart(){
         localStorage.setItem('item' + this.props.id, this.props.id);
+        toastr.success('Item added to cart!', 'Success!');
     }
 
     render(){

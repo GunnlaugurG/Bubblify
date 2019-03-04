@@ -1,16 +1,24 @@
 import React from 'react';
 import BundleDetails from '../BundleDetails/BundleDetails'
-import Services from '../../../server/services/bubbleService'
+import axios from 'axios';
+
 
 class BundleDetailsList extends React.Component{
     componentDidMount(){
-        var bundleItem = Services.getBundles().find((item) => item.id == this.props.match.params.bundleId);
-        this.setState({bundleName: bundleItem.name});
+
+        axios.get('http://localhost:3500/api/bundles/' + this.props.match.params.bundleId)
+        .then(res => {
+            this.setState({bundleName: res.data.name});
+        })
+
+        // var bundleItem = Services.getBundles().find((item) => item.id == this.props.match.params.bundleId);
+        // this.setState({bundleName: bundleItem.name});
     }
     constructor(){
         super();
         this.state = {
             bundleName: '',
+            bubbles: [{}]
         }
     }
     render(){

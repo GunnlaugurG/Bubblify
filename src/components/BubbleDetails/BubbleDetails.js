@@ -1,11 +1,20 @@
 import React from 'react';
-import { getProducts } from '../../../server/services/bubbleService'
+//import { getProducts } from '../../../server/services/bubbleService';
+import toastr from 'toastr';
+import axios from 'axios';
+
 
 class BubbleDetails extends React.Component{
     componentDidMount(){
-
-        var bubbleItem = getProducts().find((item) => item.id == this.props.match.params.bubbleId)
-        this.setState({bubble: bubbleItem});
+        
+        axios.get('http://localhost:3500/api/bubbles/' + this.props.match.params.bubbleId)
+            .then(res => {
+                this.setState({
+                    bubble: res.data
+                })
+            })
+        // var bubbleItem = data.find((item) => item.id == that.props.match.params.bubbleId)
+        // that.setState({bubble: bubbleItem});
     }
 
     constructor(){
@@ -17,9 +26,8 @@ class BubbleDetails extends React.Component{
     }
 
     addToCart(){
-
         localStorage.setItem('item' + this.state.bubble.id, this.state.bubble.id);
-        console.log(localStorage);
+        toastr.success('Item added to cart!', 'Success!');
     }
 
 

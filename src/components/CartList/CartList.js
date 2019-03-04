@@ -1,6 +1,8 @@
 import React from 'react';
-import Services from '../../../server/services/bubbleService';
+//import Services from '../../../server/services/bubbleService';
 import CartListItem from '../CartListItem/CartListItem';
+import axios from 'axios';
+
 
 
 
@@ -17,18 +19,26 @@ class CartList extends React.Component{
     }
 
 
+
     convertLocal(){
-        console.log("FROM CHILD");
         var keys = Object.keys(localStorage);
         var items = [];
-        
         if(keys.length > 1){
             for(var i = 0 ; i < keys.length -1 ; i++){
-                items.push(JSON.parse(localStorage.getItem(keys[i])))
+                var key = keys[i]
+                if(key.match('item')){
+                    items.push(JSON.parse(localStorage.getItem(key)))
+                }
             }
         }
-        var allProducts = items.map((b) => Services.getProducts().find((items) =>  items.id == b ));
-        this.setState({products: allProducts});
+        var allProducts
+        axios.get('http://localhost:3500/api/bubbles')
+        .then(res => {
+            allProducts = items.map((b) => res.data.find((items) => items.id == b));
+            this.setState({products: allProducts});
+            this.props.updateState(allProducts);
+        })
+
     }
 
 

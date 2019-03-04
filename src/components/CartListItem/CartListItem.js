@@ -1,6 +1,7 @@
 import React from 'react';
 import CartList from '../CartList/CartList';
 import { Link } from 'react-router-dom';
+import toastr from 'toastr';
 
 class CartListItem extends React.Component{
     constructor(props){
@@ -27,6 +28,7 @@ class CartListItem extends React.Component{
         localStorage.removeItem("item" + this.props.id);
         this.props.updateCart;
         this.props.updateCart();
+        toastr.info('Item removed from cart!', 'Success!');
     }
 
 

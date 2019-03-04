@@ -3,9 +3,9 @@ import React from 'react';
 
 
 const NavbarLogo = () => {
-    
+    let number = localStorage.getItem('number');
     return (
-    <img className='navigation-logo' src='https://www.freeiconspng.com/uploads/bubbles-png-0.png' alt='logo' />
+        <img className='navigation-logo' src='https://www.freeiconspng.com/uploads/bubbles-png-0.png' alt='logo' />
     )
 }
 
