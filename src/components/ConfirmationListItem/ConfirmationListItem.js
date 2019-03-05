@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
+import { PropTypes } from 'prop-types';
 
 
 class ConfirmationListItem extends React.Component {
@@ -35,6 +36,19 @@ class ConfirmationListItem extends React.Component {
         </li>
         )
     }
+}
+ConfirmationListItem.propTypes = {
+    // THE ITEM TO DISPLAY
+    //ITEMS ID
+    id: PropTypes.number.isRequired,
+    //ITEMS NAME
+    name: PropTypes.string.isRequired,
+    //ITEMS IMAGE
+    image: PropTypes.string.isRequired,
+    //ITEMS DESRIPTION
+    description: PropTypes.string.isRequired,
+    //ITEMS PRICE
+    price: PropTypes.number.isRequired,
 }
 
 export default ConfirmationListItem;

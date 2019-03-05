@@ -4,6 +4,7 @@ import ConfirmationListItem from '../ConfirmationListItem/ConfirmationListItem';
 import Services from '../../services/bubbleService'
 import toastr from 'toastr';
 import { ProgressBar} from 'react-bootstrap';
+import { PropTypes } from 'prop-types';
 
 
 
@@ -12,12 +13,11 @@ class Confirmation extends React.Component{
         super(props);
         this.state = {
             fields: {},
-            items: [{}]
+            items: []
         }
         this.updateState();
         this.sendOrder = this.sendOrder.bind(this);
         this.updateState = this.updateState.bind(this);
-        console.log(this.props);
     }
 
     updateState(){
@@ -48,9 +48,6 @@ class Confirmation extends React.Component{
     }
     sendOrder(){
         let that = this;
-        console.log("SENT");
-        console.log(this.state);
-        console.log(this.state.fields.telephone)
         toastr.success('Order complete!!', 'Success!');
         Services.postOrder(this.state.fields, this.state.items)
         .then(function (response) {
@@ -110,7 +107,24 @@ class Confirmation extends React.Component{
             </div>
         )
     }
-
 }
+
+Confirmation.propTypes = {
+    // The information from form
+    address: PropTypes.shape({
+        // name of the one purchusing
+        name: PropTypes.string.isRequired,
+        // the telephone number og buyer
+        telephone: PropTypes.string.isRequired,
+        // city, not required for pickup
+        city: PropTypes.string,
+        // postal, not required for pickup
+        postal: PropTypes.string,
+        // address, not required for pickup
+        address: PropTypes.string,
+    }),
+    complete: PropTypes.func.isRequired
+}
+
 
 export default Confirmation;

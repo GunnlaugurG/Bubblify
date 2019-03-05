@@ -39,4 +39,5 @@ class BubbleDetails extends React.Component{
     }
 }
 
+
 export default BubbleDetails;

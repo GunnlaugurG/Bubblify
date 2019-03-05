@@ -1,8 +1,7 @@
 import React from 'react'
 import CartContainer from '../CartContainer/CartContainer'
 
-class Cart extends React.Component {
-    render(){
+const Cart = () => {
         var number = localStorage.getItem('number');
         number = (number) ? number.slice(0, 3) + "-" + number.slice(3, 6) + "-" + number.slice(6) : "";
         return (
@@ -12,7 +11,6 @@ class Cart extends React.Component {
                 <CartContainer />
             </div>
         )
-    }
 }   
 
 export default Cart;

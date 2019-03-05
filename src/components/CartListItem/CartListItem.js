@@ -2,6 +2,7 @@ import React from 'react';
 import CartList from '../CartList/CartList';
 import { Link } from 'react-router-dom';
 import toastr from 'toastr';
+import { PropTypes } from 'prop-types';
 
 class CartListItem extends React.Component{
     constructor(props){
@@ -48,7 +49,18 @@ class CartListItem extends React.Component{
         )
     }
 }
-
+CartListItem.propTypes = {
+    // THE ID IF THE ITEM IN CART
+    id: PropTypes.number.isRequired,
+    // THE NAME OF THE ITEM IN CART
+    name: PropTypes.string.isRequired,
+    // THE IMAGE OF THE ITEM IN CART
+    image: PropTypes.string.isRequired,
+    // THE PRICE OT THE ITEM IN CART
+    price: PropTypes.number.isRequired,
+    // TO UPDATE AND RERENDER THE PARENT COMPONENT
+    updateCart: PropTypes.func.isRequired,
+}
 
 
 export default CartListItem;

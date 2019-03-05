@@ -10,8 +10,6 @@ export default class BubbleList extends React.Component {
         }
         //this.addToCart = this.addToCart.bind(this);
     }
-    componentDidUpdate(){
-    }
 
     componentDidMount(){
         Services.getProducts().then(b => this.setState({products: b}));

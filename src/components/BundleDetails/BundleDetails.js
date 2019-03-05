@@ -1,5 +1,4 @@
 import React from 'react';
-// import Services from '../../../server/services/bubbleService'
 import BubbleItem from '../BubbleItem/BubbleItem';
 import { PropTypes } from 'prop-types';
 import Services from '../../services/bubbleService';
@@ -12,7 +11,6 @@ class BundleDetails extends React.Component{
         .then((b) => {
             Services.getProducts()
             .then(res => {
-                console.log(res);
                 var allProducts = b.items.map((a) =>  res.find((item) => item.id == a));
                 this.setState({
                     products: allProducts
@@ -29,8 +27,6 @@ class BundleDetails extends React.Component{
         }
     }
 
-
-
     render(){
         const { products } = this.state;
         return (
@@ -40,6 +36,7 @@ class BundleDetails extends React.Component{
 }
 
 BundleDetails.propTypes = {
+    // the id of the bundle to get the details
     getNumberOfBundle: PropTypes.string.isRequired
 };
 

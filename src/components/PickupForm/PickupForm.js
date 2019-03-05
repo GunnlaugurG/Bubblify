@@ -50,7 +50,6 @@ class PickupForm extends React.Component{
         e.preventDefault();
         // TODO: Validate form
         if (this.validateForm()) {
-            console.log(this.props);
             localStorage.setItem('number', e.target.telephone.value);
             this.props.changeVal(this.state.fields);
           } else {

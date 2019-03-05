@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
+import ConfirmationListItem from '../ConfirmationListItem/ConfirmationListItem';
+import { PropTypes } from 'prop-types';
 
 const OrderList = (props) => {
     const {address, telephone, name, city, postal, items} = props.order;
@@ -11,14 +13,14 @@ const OrderList = (props) => {
                     <div className="card-body">
                         <h3 className="card-title">Name: {name}</h3>
                         <p>Phone: {telephone}</p>
-                        <hr/>
                         <h1>Items</h1>
-                        {items.map(item => (
-                            <Link to={ "/bubbles/" + item.id}> <p>{item.name}</p> </Link>
+                        {items.map(b => (
+                            <ConfirmationListItem key={b.id} {...b} />
+                            //<Link to={ "/bubbles/" + item.id}> <p>{item.name}</p> </Link>
                         ))}
                     </div>
                 </div>
-            </li>
+            </li>   
         )
     } else {
         singleOrder = (
@@ -30,10 +32,10 @@ const OrderList = (props) => {
                         <p>Address: {address} </p>
                         <p>City: {city} </p>
                         <p>Postal: {postal} </p>
-                        <hr/>
                         <h1>Items</h1>
-                        {items.map(item => (
-                           <Link to={ "/bubbles/" + item.id}> <p>{item.name}</p> </Link>
+                        {items.map(b => (
+                            <ConfirmationListItem key={b.id} {...b} />
+                           //<Link to={ "/bubbles/" + item.id}> <p>{item.name}</p> </Link>
                         ))}
                     </div>
                 </div>
@@ -48,6 +50,24 @@ const OrderList = (props) => {
         </>
 
     )
+}
+
+OrderList.propTypes = {
+    order: PropTypes.shape({
+        // THE ITEMS IN THE OREDER
+        items: PropTypes.array.isRequired,
+        // INFORMATION ABOUT THE ON WHO ORDERED
+        // BUYERS ADDRESS
+        address: PropTypes.string,
+        // BUYERS CITY
+        city: PropTypes.string,
+        // BUYERS NAME
+        name: PropTypes.string,
+        // BUYERS  POSTAL
+        postal: PropTypes.string,
+        // BUYERS PHONE NUMBER
+        telephone: PropTypes.string,
+    })
 }
 
 export default OrderList;

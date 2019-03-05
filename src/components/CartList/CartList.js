@@ -1,12 +1,13 @@
 import React from 'react';
 import Services from '../../services/bubbleService';
 import CartListItem from '../CartListItem/CartListItem';
+import { PropTypes } from 'prop-types';
 
 class CartList extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            products: [{}],
+            products: [],
         }
         this.convertLocal = this.convertLocal.bind(this);
     }
@@ -30,7 +31,6 @@ class CartList extends React.Component{
         var allProducts
         Services.getProducts()
         .then(res => {
-            console.log(res);
             allProducts = items.map((b) => res.find((items) => items.id == b));
             this.setState({products: allProducts});
             this.props.updateState(allProducts);
@@ -54,6 +54,11 @@ class CartList extends React.Component{
             )
         }
     }
+}
+
+CartList.propTypes = {
+    // THIS IS TO UPDATE THE LIST WHEN ITEMS FROM CART ARE REMOVED
+    updateState: PropTypes.func.isRequired,
 }
 
 export default CartList;

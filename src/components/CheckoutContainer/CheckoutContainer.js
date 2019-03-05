@@ -29,7 +29,6 @@ class CheckoutContainer extends React.Component{
             addressValidated: false,
             orderComplete: true,
         })
-        console.log(this.state);
     }
 
     changeToDeliver(){
@@ -60,7 +59,6 @@ class CheckoutContainer extends React.Component{
     render(){
         const submittedAddress = this.state.address;
         return (
-
                 this.state.orderComplete?
                     <Complete />
                 :

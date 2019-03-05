@@ -28,7 +28,6 @@ class CartContainer extends React.Component {
                 }
             }
         }
-        location.reload();
     }
     
     

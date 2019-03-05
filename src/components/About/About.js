@@ -5,10 +5,13 @@ const About = () => {
     return (
 
         <div className="bubble-container">
-            <h1>
-                ABOUT BUBBLES
-            </h1>
-        
+            <h1>About bubblify</h1>
+            <hr/>
+            <h4>Bubblify is the coolest react application that mankind has evers seen</h4>
+            <br/>
+            <br/>
+            <p>Location: Internet</p>
+            <p>Established: Soon</p>
         </div>
 
     )

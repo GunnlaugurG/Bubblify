@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import {PropTypes} from 'prop-types';
 
 const BundleItem = ({id, name, items}) => {
 
@@ -16,6 +17,15 @@ const BundleItem = ({id, name, items}) => {
             </div>
         </li>
     )
+}
+
+BundleItem.propTypes = {
+    // THE ID OF THE BUNDLE
+    id: PropTypes.number.isRequired,
+    // THE NAMA OF THE BUNDLE
+    name: PropTypes.string.isRequired,
+    // THE ITESM OF THE BUNDLE
+    items: PropTypes.array.isRequired,
 }
 
 export default BundleItem;

@@ -1,10 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import toastr from 'toastr';
+import { PropTypes } from 'prop-types';
 
 class BubbleItem extends React.Component{
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
         this.addToCart = this.addToCart.bind(this);
     }
 
@@ -14,6 +15,7 @@ class BubbleItem extends React.Component{
     }
 
     render(){
+
         return (
             <li className="">
                 <div className="card">
@@ -28,5 +30,26 @@ class BubbleItem extends React.Component{
         )
     }
 }
+BubbleItem.propTypes = {
+    //  The bubble provide as props
+    //  BUBBLE ID
+        id: PropTypes.number.isRequired,
+        // BUBBLE IMAGE
+        image: PropTypes.string.isRequired,
+        // BUBBLE NAME
+        name: PropTypes.string.isRequired,
+        // BUBBLE DESCRIPTON
+        description: PropTypes.string.isRequired,
+        // BUBBLE PRICE
+        price: PropTypes.number.isRequired
+};
+BubbleItem.defaultProps = {
+    id: 404,
+    image: "404",
+    name: "404NotFound",
+    description: "404NotFound",
+    price: 404,
+}
+
 
 export default BubbleItem;

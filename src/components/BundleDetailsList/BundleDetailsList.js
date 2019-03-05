@@ -3,9 +3,9 @@ import BundleDetails from '../BundleDetails/BundleDetails'
 import Services from '../../services/bubbleService';
 
 
+
 class BundleDetailsList extends React.Component{
     componentDidMount(){
-
         var bundleId = this.props.match.params.bundleId;
         Services.getSingleBundle(bundleId)
         .then(res => {
@@ -17,7 +17,7 @@ class BundleDetailsList extends React.Component{
         super();
         this.state = {
             bundleName: '',
-            bubbles: [{}]
+            bubbles: []
         }
     }
     render(){
@@ -32,6 +32,7 @@ class BundleDetailsList extends React.Component{
         )
     }
 }
+
 
 
 export default BundleDetailsList;

@@ -3,6 +3,7 @@ import Input from '../Input/Input';
 import Form from '../Form/Form';
 import validator from 'validator';
 import toastr from 'toastr';
+import { PropTypes } from 'prop-types';
 
 
 
@@ -120,5 +121,10 @@ class AddressForm extends React.Component{
     }
 
 }
+
+AddressForm.propTypes = {
+    // CHANGE THE VALUE OF PARENT COMPONTS STATE
+    changeVal: PropTypes.func.isRequired
+};
 
 export default AddressForm;
