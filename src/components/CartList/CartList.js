@@ -1,10 +1,6 @@
 import React from 'react';
-//import Services from '../../../server/services/bubbleService';
+import Services from '../../services/bubbleService';
 import CartListItem from '../CartListItem/CartListItem';
-import axios from 'axios';
-
-
-
 
 class CartList extends React.Component{
     constructor(props){
@@ -32,9 +28,10 @@ class CartList extends React.Component{
             }
         }
         var allProducts
-        axios.get('http://localhost:3500/api/bubbles')
+        Services.getProducts()
         .then(res => {
-            allProducts = items.map((b) => res.data.find((items) => items.id == b));
+            console.log(res);
+            allProducts = items.map((b) => res.find((items) => items.id == b));
             this.setState({products: allProducts});
             this.props.updateState(allProducts);
         })

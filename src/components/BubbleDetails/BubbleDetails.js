@@ -1,20 +1,12 @@
 import React from 'react';
-//import { getProducts } from '../../../server/services/bubbleService';
 import toastr from 'toastr';
-import axios from 'axios';
+import Services from '../../services/bubbleService'
 
 
 class BubbleDetails extends React.Component{
     componentDidMount(){
-        
-        axios.get('http://localhost:3500/api/bubbles/' + this.props.match.params.bubbleId)
-            .then(res => {
-                this.setState({
-                    bubble: res.data
-                })
-            })
-        // var bubbleItem = data.find((item) => item.id == that.props.match.params.bubbleId)
-        // that.setState({bubble: bubbleItem});
+        const id = this.props.match.params.bubbleId;
+        Services.getSingleProduct(id).then(b => this.setState({bubble: b}));
     }
 
     constructor(){

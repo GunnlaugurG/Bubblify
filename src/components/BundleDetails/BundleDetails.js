@@ -2,28 +2,24 @@ import React from 'react';
 // import Services from '../../../server/services/bubbleService'
 import BubbleItem from '../BubbleItem/BubbleItem';
 import { PropTypes } from 'prop-types';
-import axios from 'axios';
+import Services from '../../services/bubbleService';
 
 class BundleDetails extends React.Component{
     componentDidMount(){
+        const id = this.props.getNumberOfBundle;
         
-        axios.get('http://localhost:3500/api/bundles/' + this.props.getNumberOfBundle)
-        .then(bundle => {
-            axios.get('http://localhost:3500/api/bubbles')
+        Services.getSingleBundle(id)
+        .then((b) => {
+            Services.getProducts()
             .then(res => {
-                var allProducts = bundle.data.items.map((b) => res.data.find((items) => items.id == b));
-                this.setState({products: allProducts});
+                console.log(res);
+                var allProducts = b.items.map((a) =>  res.find((item) => item.id == a));
+                this.setState({
+                    products: allProducts
+                })
             })
         })
-
-        
-        // var bundleItem = Services.getBundles().find((item) => item.id == this.props.getNumberOfBundle); 
-        // //this.setState({bundleName: bundleItem.name});
-        // var allProducts = bundleItem.items.map((b) => Services.getProducts().find((items) =>  items.id == b ));
-        // this.setState({products: allProducts});
-
     }
-
 
     constructor(){
         super();
@@ -44,9 +40,7 @@ class BundleDetails extends React.Component{
 }
 
 BundleDetails.propTypes = {
-    getNumberOfBundle: PropTypes.shape({
-        bundleName: PropTypes.number.isRequired
-    }).isRequired
+    getNumberOfBundle: PropTypes.string.isRequired
 };
 
 export default BundleDetails;

@@ -1,7 +1,7 @@
 import React from 'react';
-import axios from 'axios';
 import CartListItem from '../ConfirmationListItem/ConfirmationListItem'
 import ConfirmationListItem from '../ConfirmationListItem/ConfirmationListItem';
+import Services from '../../services/bubbleService'
 import toastr from 'toastr';
 import { ProgressBar} from 'react-bootstrap';
 
@@ -32,9 +32,10 @@ class Confirmation extends React.Component{
             }
         }
         var allProducts
-        axios.get('http://localhost:3500/api/bubbles')
+
+        Services.getProducts()
         .then(res => {
-            allProducts = items.map((b) => res.data.find((items) => items.id == b));
+            allProducts = items.map((b) => res.find((items) => items.id == b));
             this.setState({
                 items: allProducts,
                 fields: this.props.address
@@ -51,17 +52,10 @@ class Confirmation extends React.Component{
         console.log(this.state);
         console.log(this.state.fields.telephone)
         toastr.success('Order complete!!', 'Success!');
-        axios.post('http://localhost:3500/api/orders/' + this.state.fields.telephone,{
-            name: this.state.fields.name,
-            address: this.state.fields.address,
-            city: this.state.fields.city,
-            telephone: this.state.fields.telephone,
-            postal: this.state.fields.postal,
-            items: this.state.items
-        })
+        Services.postOrder(this.state.fields, this.state.items)
         .then(function (response) {
-            if(response.request.status === 200){
-                console.log(response.request.status)
+            if(response === 200){
+                console.log(response)
                 var keys = Object.keys(localStorage);
                 var items = [];
                 if(keys.length > 1){
@@ -73,9 +67,9 @@ class Confirmation extends React.Component{
                     }
                 }
             }
-        })
-        .catch(function (error) {
-            console.log(error);
+            else{
+                console.log('OOPS somthing went wrong');
+            }
         })
         .then(() =>{
             that.props.complete();

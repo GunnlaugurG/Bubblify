@@ -1,8 +1,6 @@
 import fetch from 'fetch-jsonp';
 import axios from 'axios';
 
-const endpoint = 'http://localhost:3500';
-var local = 'http://localhost:3500/api/bubbles';
 
 const bubbleServ = () => {
     return {
@@ -11,8 +9,44 @@ const bubbleServ = () => {
             .then(res => {
                 return res.data
             })
+        },
+        getSingleProduct: (id) => {
+            return axios.get('http://localhost:3500/api/bubbles/' + id)
+            .then(res => {
+                return res.data;
+            })
+        },
+        getBundles: () => {
+            return axios.get('http://localhost:3500/api/bundles')
+            .then(res => {
+                return res.data;
+            })
+        },
+        getSingleBundle: (id) => {
+            return axios.get('http://localhost:3500/api/bundles/' + id)
+            .then(res => {
+                return res.data;
+            })
+        },
+        getOrders: (tele) => {
+            return axios.get('http://localhost:3500/api/orders/' + tele)
+            .then(res => {
+                return res.data;
+            })
+        },
+        postOrder: (info, items) => {
+            return axios.post('http://localhost:3500/api/orders/' + info.telephone,{
+                name: info.name,
+                address: info.address,
+                city: info.city,
+                telephone: info.telephone,
+                postal: info.postal,
+                items: items
+            })
+            .then(function (response) {
+                return response.request.status;
+            })
         }
-
     };
 };
 

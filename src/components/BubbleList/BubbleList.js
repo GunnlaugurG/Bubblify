@@ -1,8 +1,6 @@
 import React from 'react'
 import BubbleItem from '../BubbleItem/BubbleItem';
-//import { getProducts } from '../../../server/services/bubbleService'
 import Services from '../../services/bubbleService'
-import axios from 'axios';
 
 export default class BubbleList extends React.Component {
     constructor(){
@@ -16,27 +14,8 @@ export default class BubbleList extends React.Component {
     }
 
     componentDidMount(){
-        axios.get('http://localhost:3500/api/bubbles')
-            .then(res => {
-                this.setState({
-                    products: res.data
-                })
-            })
-
-
-        // var allProducts = getProducts();
-        // console.log(allProducts);
-        // this.setState({
-        //     products: allProducts
-        // })
+        Services.getProducts().then(b => this.setState({products: b}));
     }
-
-    // addToCart(id){
-    //     console.log("HELLO");
-    //     localStorage.setItem('item' + id, id);
-    //     console.log(localStorage);
-    // }
-
 
     render() {
         const { products } = this.state;

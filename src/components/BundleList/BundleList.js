@@ -1,7 +1,7 @@
 import React from 'react';
 import BundleItem from '../BundleItem/BundleItem'
-//import { getBundles } from '../../../server/services/bubbleService';
-import axios from 'axios';
+import Service from '../../services/bubbleService';
+
 
 
 export default class Bundle extends React.Component {
@@ -13,18 +13,7 @@ export default class Bundle extends React.Component {
     }
 
     componentDidMount(){
-
-        axios.get('http://localhost:3500/api/bundles')
-        .then(res => {
-            this.setState({bundle: res.data});
-        })
-
-// --------------------- OLD -----------------------------------
-//      var allBundles = getBundles();
-//      this.setState(
-//          {bundle: allBundles}
-//      )
-// -------------------------------------------------------------
+        Service.getBundles().then(b => this.setState({bundle: b}));
     }
   
     render() {

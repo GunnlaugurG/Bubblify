@@ -1,6 +1,6 @@
 import React from 'react';
-import axios from 'axios';
 import OrderList from '../OrderList/OrderList';
+import Services from '../../services/bubbleService';
 
 
 class Orders extends React.Component {
@@ -8,22 +8,17 @@ class Orders extends React.Component {
         super();
         this.state = ({
             telephone: "",
-            orders: [{}]
+            orders: []
         })
     }
 
     componentDidMount(){
         var tele = localStorage.getItem('number');
         if(tele !== null){
-            this.setState({
-                telephone: tele
-            })
-            axios.get('http://localhost:3500/api/orders/' + tele)
-            .then(res => {
-                this.setState({
-                    orders: res.data
-                })
-            })
+            Services.getOrders(tele).then(b => this.setState({
+                telephone: tele,
+                orders: b
+            }));
         }
     }
 
