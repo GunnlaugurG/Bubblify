@@ -31,7 +31,7 @@ class CartContainer extends React.Component {
         this.setState({
             products: []
         })
-        // location.reload();
+         location.reload();
     }
     
     
