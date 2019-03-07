@@ -33,6 +33,10 @@ const bubbleServ = () => {
             .then(res => {
                 return res.data;
             })
+            .catch(error => {
+                return console.log(error)
+            }
+            )
         },
         postOrder: (info, items) => {
             return axios.post('http://localhost:3500/api/orders/' + info.telephone,{

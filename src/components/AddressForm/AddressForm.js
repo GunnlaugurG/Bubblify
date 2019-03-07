@@ -50,7 +50,7 @@ class AddressForm extends React.Component{
         if (!validator.isMobilePhone(telephone)) { errors.telephoneError = 'Telephone is not propper Try adding 354!'}
     
         if (Object.keys(errors).length > 0) {
-          this.setState({ ...this.state.errors, errors });
+            this.setState({ ...this.state.errors, errors });
           return false;
         }
         return true;

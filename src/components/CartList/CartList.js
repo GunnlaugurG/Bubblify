@@ -10,10 +10,13 @@ class CartList extends React.Component{
             products: [],
         }
         this.convertLocal = this.convertLocal.bind(this);
+        this.clearCart = this.clearCart.bind(this);
+
     }
     componentDidMount(){
         this.convertLocal();
     }
+    
 
     convertLocal(){
         var keys = Object.keys(localStorage);
@@ -36,10 +39,28 @@ class CartList extends React.Component{
 
     }
 
+    clearCart(){
+        var keys = Object.keys(localStorage);
+        var items = [];
+        if(keys.length > 1){
+            for(var i = 0 ; i < keys.length -1 ; i++){
+                var key = keys[i]
+                if(key.match('item')){
+                    localStorage.removeItem(key)
+                }
+            }
+        }
+        this.setState({ products: []})
+        this.props.updateState(items);
+    }
+
+
 
 
     render(){
         const { products } = this.state;
+        var productList = products.map(b => <CartListItem key={b.id} {...b} updateCart={this.convertLocal.bind(this)}/>)
+
         if(products.length === 0){
             return (
                 <div>
@@ -47,8 +68,11 @@ class CartList extends React.Component{
                 </div>
             )
         }else{
-            return(
-                products.map(b => <CartListItem key={b.id} {...b} updateCart={this.convertLocal.bind(this)}/>)
+            return (
+                <div>
+                    { productList }
+                    <button className="btn btn-danger" onClick={this.clearCart}>Clear Cart</button>
+                </div>
             )
         }
     }

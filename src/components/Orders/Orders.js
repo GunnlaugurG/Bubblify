@@ -15,10 +15,14 @@ class Orders extends React.Component {
     componentDidMount(){
         var tele = localStorage.getItem('number');
         if(tele !== null){
-            Services.getOrders(tele).then(b => this.setState({
-                telephone: tele,
-                orders: b
-            }));
+            Services.getOrders(tele).then(b => {
+                if(b){
+                    this.setState({
+                        telephone: tele,
+                        orders: b
+                    })
+                }
+            });
         }
     }
 
