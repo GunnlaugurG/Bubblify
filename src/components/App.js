@@ -11,6 +11,7 @@ import About from './About/About'
 import Cart from './Cart/Cart'
 import Checkout from './Checkout/Checkout'
 import Orders from './Orders/Orders'
+import NotFound from './NotFound/NotFound'
 
 
 const App = () => {
@@ -27,7 +28,7 @@ const App = () => {
             <Route exact path="/cart" component={ Cart } />
             <Route exact path="/checkout" component={ Checkout } />
             <Route exact path="/orders" component= { Orders} />
-            
+            <Route component={ NotFound } />
         </Switch>
         </div>
     )

@@ -6,7 +6,7 @@ class CartContainer extends React.Component {
     constructor(){
         super();
         this.state = {
-            products: [{}]
+            products: []
         }
         this.clearCart = this.clearCart.bind(this);
         this.updateState = this.updateState.bind(this);
@@ -28,6 +28,10 @@ class CartContainer extends React.Component {
                 }
             }
         }
+        this.setState({
+            products: []
+        })
+        // location.reload();
     }
     
     

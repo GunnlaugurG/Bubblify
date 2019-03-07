@@ -15,8 +15,6 @@ class CartList extends React.Component{
         this.convertLocal();
     }
 
-
-
     convertLocal(){
         var keys = Object.keys(localStorage);
         var items = [];

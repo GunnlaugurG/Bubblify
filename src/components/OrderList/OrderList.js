@@ -16,7 +16,6 @@ const OrderList = (props) => {
                         <h1>Items</h1>
                         {items.map(b => (
                             <ConfirmationListItem key={b.id} {...b} />
-                            //<Link to={ "/bubbles/" + item.id}> <p>{item.name}</p> </Link>
                         ))}
                     </div>
                 </div>
@@ -35,7 +34,6 @@ const OrderList = (props) => {
                         <h1>Items</h1>
                         {items.map(b => (
                             <ConfirmationListItem key={b.id} {...b} />
-                           //<Link to={ "/bubbles/" + item.id}> <p>{item.name}</p> </Link>
                         ))}
                     </div>
                 </div>
