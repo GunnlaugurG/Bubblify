@@ -10,4 +10,4 @@ const Index = () => {
     return <> <App/> </>
 };
 
-ReactDOM.render(<Router><App /></Router>, document.getElementById('app'));
+ReactDOM.render(<Router><Index /></Router>, document.getElementById('app'));
