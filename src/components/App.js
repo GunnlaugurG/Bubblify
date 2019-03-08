@@ -1,17 +1,17 @@
 import React from 'react';
 import { Switch, Route} from 'react-router-dom';
 
-import Navbar from './Navbar/Navbar';
-import BubblesContainer from './BubblesContainer/BubblesContainer';
+import Navbar from './Navbar/Navbar.js';
+import BubblesContainer from './BubblesContainer/BubblesContainer.js';
 import Home from './Home/Home'
-import BubbleDetails from './BubbleDetails/BubbleDetails';
+import BubbleDetails from './BubbleDetails/BubbleDetails.js';
 import Bundle from './Bundle/Bundle'
-import BundleDetailsList from './BundleDetailsList/BundleDetailsList'
-import About from './About/About'
-import Cart from './Cart/Cart'
-import Checkout from './Checkout/Checkout'
-import Orders from './Orders/Orders'
-import NotFound from './NotFound/NotFound'
+import BundleDetailsList from './BundleDetailsList/BundleDetailsList.js'
+import About from './About/About.js'
+import Cart from './Cart/Cart.js'
+import Checkout from './Checkout/Checkout.js'
+import Orders from './Orders/Orders.js'
+import NotFound from './NotFound/NotFound.js'
 
 
 const App = () => {
