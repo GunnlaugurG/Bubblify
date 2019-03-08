@@ -1,7 +1,7 @@
 import React from 'react';
 import { Switch, Route} from 'react-router-dom';
 
-import Navbar from './Navbar/Navbar.js';
+import Navbar from './navbar/Navbar.js';
 import BubblesContainer from './BubblesContainer/BubblesContainer.js';
 import Home from './Home/Home'
 import BubbleDetails from './BubbleDetails/BubbleDetails.js';
