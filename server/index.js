@@ -11,7 +11,7 @@ app.use(bodyParser.json());
 app.use(cors());
 app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument, { explorer: true }));
 
-const PORT = 3500;
+const PORT = process.env.PORT || 3500;
 /*
     All orders that reside within the system are in this collection.
     If the server is shutdown, this collection will be initalized to an empty collection

@@ -1,6 +1,7 @@
 import fetch from 'fetch-jsonp';
 import axios from 'axios';
 
+console.log(`${ process.env.PORT }`);
 
 const bubbleServ = () => {
     return {
